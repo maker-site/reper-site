@@ -1,0 +1,1532 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "Репер" - Фасадная съемка зданий и сооружений</title>
+    <style>
+        /* Основные стили */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .logo img {
+                height: 50px;
+                width: auto;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+            nav a:hover {
+                color: var(--secondary);
+                border-bottom: 2px solid var(--secondary);
+            }
+
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 3rem;
+        }
+
+            .hero h2 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 800px;
+                margin: 0 auto 2rem;
+            }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .cta-button:hover {
+                background-color: #c0392b;
+                transform: translateY(-3px);
+            }
+
+        /* Основные секции */
+        section {
+            padding: 3rem 0;
+        }
+
+            section:nth-child(even) {
+                background-color: white;
+            }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                width: 100px;
+                height: 3px;
+                background-color: var(--secondary);
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        /* Карточки преимуществ */
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .advantage-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+            .advantage-card:hover {
+                transform: translateY(-10px);
+            }
+
+            .advantage-card h3 {
+                color: var(--primary);
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        .advantage-icon {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        /* Услуги */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+
+            .service-card:hover {
+                transform: translateY(-10px);
+            }
+
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+            .service-content h3 {
+                color: var(--primary);
+                margin-bottom: 1rem;
+                font-size: 1.3rem;
+            }
+
+            .service-content ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+                .service-content ul li {
+                    padding: 0.3rem 0;
+                    position: relative;
+                    padding-left: 1.5rem;
+                }
+
+                    .service-content ul li:before {
+                        content: "✓";
+                        color: var(--success);
+                        position: absolute;
+                        left: 0;
+                        font-weight: bold;
+                    }
+
+        /* Этапы работ */
+        .stages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stage {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .stage-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Таблица процессов */
+        .process-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+            .process-table th, .process-table td {
+                padding: 1rem;
+                text-align: left;
+                border: 1px solid #ddd;
+            }
+
+            .process-table th {
+                background-color: var(--primary);
+                color: white;
+            }
+
+            .process-table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+        /* Экономические показатели */
+        .economic-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .economic-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-left: 4px solid var(--success);
+        }
+
+            .economic-card h4 {
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+        .economic-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        /* Форма заявки */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                color: var(--primary);
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+            }
+
+            .form-group textarea {
+                min-height: 150px;
+                resize: vertical;
+            }
+
+        .submit-button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+            .submit-button:hover {
+                background-color: #2980b9;
+            }
+
+        /* Футер */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+            .footer-column ul li {
+                margin-bottom: 0.8rem;
+            }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+            .footer-column a:hover {
+                color: var(--secondary);
+            }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Стили для ссылок на документы в футере */
+        .doc-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+            .doc-link i {
+                color: var(--secondary);
+                font-size: 0.9rem;
+                width: 16px;
+            }
+
+        .cta-small {
+            background-color: var(--secondary);
+            color: white !important;
+            padding: 5px 12px !important;
+            border-radius: 3px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+            .cta-small:hover {
+                background-color: #2980b9;
+                color: white !important;
+            }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .process-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-modal.active {
+            display: flex;
+        }
+
+        .pdf-modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pdf-modal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+            .pdf-modal-header h3 {
+                margin: 0;
+                font-size: 1.2rem;
+            }
+
+        .close-pdf {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+            .close-pdf:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+        .pdf-modal-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .doc-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            position: relative;
+            padding-left: 24px;
+            cursor: pointer;
+        }
+
+            .doc-link:hover {
+                color: var(--secondary);
+            }
+
+            .doc-link::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 16px;
+                height: 16px;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            .doc-link[data-pdf="license"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E");
+            }
+
+            .doc-link[data-pdf="privacy"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z'/%3E%3C/svg%3E");
+            }
+
+            .doc-link[data-pdf="contract"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z'/%3E%3C/svg%3E");
+            }
+
+            .doc-link[data-pdf="methodology"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z'/%3E%3C/svg%3E");
+            }
+
+            .doc-link[data-pdf="price"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z'/%3E%3C/svg%3E");
+            }
+
+            .doc-link[data-pdf="samples"]::before {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233498db'%3E%3Cpath d='M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z'/%3E%3C/svg%3E");
+            }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-drafting-compass" style="font-size: 2rem; color: var(--secondary);"></i>
+                <div>
+                    <h1>ООО "Репер"</h1>
+                    <p style="font-size: 0.9rem;">Геодезические услуги</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О компании</a></li>
+                    <li><a href="#advantages">Преимущества</a></li>
+                    <li><a href="#process">Процесс</a></li>
+                    <li><a href="#economics">Экономика</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <h2>Фасадная съемка зданий и сооружений</h2>
+            <p>Высокоточные геодезические услуги с применением современного оборудования: 3D-лазерные сканеры, тахеометры, БПЛА. Для реставрации, ремонта, проектирования и экспертиз.</p>
+            <a href="#contact" class="cta-button">Оставить заявку</a>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">О компании ООО "Репер"</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    Мы специализируемся на предоставлении профессиональных геодезических услуг, ключевым направлением которых является фасадная съёмка зданий и сооружений.
+                    Эта услуга востребована при реставрации исторических объектов, капитальном ремонте зданий, проектировании вентилируемых фасадов,
+                    установке наружной рекламы и проведении судебных строительно-технических экспертиз.
+                </p>
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    Фасадная съёмка позволяет получить точную 3D-модель или чертеж фасада с детализацией архитектурных элементов, отклонений от вертикали,
+                    расположения окон, дверей и декора.
+                </p>
+                <p style="font-size: 1.1rem;">
+                    В компании внедрена потоковая (поточная) модель производства, которая обеспечивает стандартизацию процессов на каждом этапе,
+                    параллельную работу над несколькими объектами без потери качества и чёткое распределение задач между специалистами.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши преимущества -->
+    <section id="advantages">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="advantages">
+                <div class="advantage-card">
+                    <h3><i class="fas fa-award advantage-icon"></i> Качество</h3>
+                    <p>Высокоточная аппаратура (3D-лазерные сканеры, тахеометры, дроны, ПО) и профессионализм наших специалистов обеспечивают высокую точность полученных данных.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><i class="fas fa-money-bill-wave advantage-icon"></i> Гибкое ценообразование</h3>
+                    <p>Конкурентоспособные цены благодаря использованию современного оборудования и технологий, позволяющих снизить себестоимость выполнения работ.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><i class="fas fa-map-marked-alt advantage-icon"></i> Работа в смежных регионах</h3>
+                    <p>Мобильные бригады готовы к выездам в соседние области, что расширяет зону обслуживания.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><i class="fas fa-users advantage-icon"></i> Опыт и квалификация</h3>
+                    <p>Коллектив состоит из опытных профессионалов с многолетним стажем работы в сфере геодезии и строительства.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><i class="fas fa-user-tie advantage-icon"></i> Индивидуальный подход</h3>
+                    <p>Каждый заказ рассматривается индивидуально, учитываются особенности проекта, пожелания клиента и специфические требования.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><i class="fas fa-chart-line advantage-icon"></i> Потоковая модель</h3>
+                    <p>Стандартизация процессов на каждом этапе позволяет сократить сроки выполнения заказов без потери качества.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Процесс работы -->
+    <section id="process" style="background-color: #f5f7fa;">
+        <div class="container">
+            <h2 class="section-title">Этапы выполнения фасадной съемки</h2>
+
+            <div class="stages">
+                <div class="stage">
+                    <div class="stage-number">1</div>
+                    <h3>Подготовительный</h3>
+                    <p>Анализ ТЗ, изучение архивных данных, получение разрешений, составление плана и сметы.</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">2</div>
+                    <h3>Полевой</h3>
+                    <p>Выезд на объект, проведение съёмки фасадов тахеометром/3D-сканером/БПЛА, фотофиксация.</p>
+                </div>
+                <div class="stage">
+                    <div class="stage-number">3</div>
+                    <h3>Камеральный и отчётный</h3>
+                    <p>Обработка данных в ПО, построение чертежей, 3D-моделей, формирование технического отчёта.</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 2.5rem 0 1rem; color: var(--primary); text-align: center;">Ответственные должности на каждом этапе</h3>
+
+            <table class="process-table">
+                <thead>
+                    <tr>
+                        <th>Этап</th>
+                        <th>Описание работ</th>
+                        <th>Ответственные должности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I. Подготовительный</strong></td>
+                        <td>Анализ технического задания; Изучение архивных данных об объекте; Получение разрешений на съёмку; Составление плана и сметы.</td>
+                        <td>Сметчик, Юрист, Геодезист-исполнитель, Ген. директор</td>
+                    </tr>
+                    <tr>
+                        <td><strong>II. Полевой</strong></td>
+                        <td>Выезд на объект; Проведение съёмки фасадов тахеометром/3D-сканером/БПЛА; Фотофиксация дефектов и особенностей; Предварительная проверка точности данных.</td>
+                        <td>Геодезист-исполнитель, Ведущий геодезист</td>
+                    </tr>
+                    <tr>
+                        <td><strong>III. Камеральный и отчётный</strong></td>
+                        <td>Обработка данных в специализированном ПО (AutoCAD, Revit, CloudCompare); Построение чертежей, 3D-моделей, расчёт отклонений; Формирование технического отчёта; Контроль качества результатов; Сдача работы заказчику.</td>
+                        <td>Ведущий геодезист, Юрист, Бухгалтер</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Экономические показатели -->
+    <section id="economics">
+        <div class="container">
+            <h2 class="section-title">Экономические показатели услуги</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Расчеты основаны на выполнении 8 услуг фасадной съемки в месяц с учетом всех затрат и плановой прибыли.
+            </p>
+
+            <div class="economic-cards">
+                <div class="economic-card">
+                    <h4>Фонд заработной платы</h4>
+                    <div class="economic-value">393 250 ₽</div>
+                    <p>в месяц с налогами (43%)</p>
+                </div>
+                <div class="economic-card">
+                    <h4>Среднемесячные расходы</h4>
+                    <div class="economic-value">583 250 ₽</div>
+                    <p>с учетом переменных затрат</p>
+                </div>
+                <div class="economic-card">
+                    <h4>Стоимость услуги</h4>
+                    <div class="economic-value">79 156 ₽</div>
+                    <p>за один объект</p>
+                </div>
+                <div class="economic-card">
+                    <h4>Рентабельность</h4>
+                    <div class="economic-value">8.6%</div>
+                    <p>при выполнении 8 услуг в месяц</p>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; box-shadow: var(--shadow);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Выводы и рекомендации</h3>
+                <ul style="padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Для безубыточной работы необходимо выполнять не менее 8 услуг в месяц по цене 79 156 руб./услуга.</li>
+                    <li style="margin-bottom: 0.5rem;">При увеличении количества услуг прибыль растет пропорционально.</li>
+                    <li style="margin-bottom: 0.5rem;">Основные статьи затрат: ФЗП (68%) и постоянные расходы (26%).</li>
+                    <li style="margin-bottom: 0.5rem;">Рекомендации: оптимизировать постоянные расходы, увеличивать количество услуг через маркетинг, рассмотреть повышение цены при росте спроса.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Стадийное представление проекта -->
+    <section id="stages" style="background-color: #f5f7fa;">
+        <div class="container">
+            <h2 class="section-title">Стадийное представление проекта</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Каждый этап проекта имеет четкие условия закрытия и распределение задач между исполнителями.
+            </p>
+
+            <div style="overflow-x: auto;">
+                <table class="process-table">
+                    <thead>
+                        <tr>
+                            <th>Стадия</th>
+                            <th>Условие закрытия / Результат</th>
+                            <th>Задачи по ролям исполнителей</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Контакт</td>
+                            <td>Принципиальная договоренность о рассмотрении возможности проекта</td>
+                            <td>Ген. директор, Сметчик, Геодезист, Юрист</td>
+                        </tr>
+                        <tr>
+                            <td>2. Коммерческое предложение</td>
+                            <td>Подписанное клиентом КП или договор</td>
+                            <td>Сметчик, Геодезист, Юрист, Бухгалтер</td>
+                        </tr>
+                        <tr>
+                            <td>3. Подготовка к работам</td>
+                            <td>Утвержденный план работ и все разрешения получены</td>
+                            <td>Сметчик, Геодезист, Юрист</td>
+                        </tr>
+                        <tr>
+                            <td>4. Полевой этап</td>
+                            <td>Собраны все полевые данные, подписан Акт выполненных работ</td>
+                            <td>Сметчик, Геодезист</td>
+                        </tr>
+                        <tr>
+                            <td>5. Камеральная обработка</td>
+                            <td>Сформирован полный пакет отчетных материалов</td>
+                            <td>Сметчик, Геодезист</td>
+                        </tr>
+                        <tr>
+                            <td>6. Сдача проекта</td>
+                            <td>Подписан Акт сдачи-приемки, проект оплачен</td>
+                            <td>Сметчик, Геодезист, Юрист, Бухгалтер</td>
+                        </tr>
+                        <tr>
+                            <td>7. Архивация</td>
+                            <td>Все материалы сданы в архив, проект закрыт</td>
+                            <td>Сметчик, Геодезист, Бухгалтер</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши услуги -->
+    <section id="services" style="background-color: #f5f7fa;">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                ООО "Репер" предоставляет полный комплекс геодезических услуг для строительства, проектирования и кадастровых работ.
+            </p>
+
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Фасадная съемка зданий</h3>
+                        <p>Высокоточное обследование фасадов для реставрации, ремонта и проектирования:</p>
+                        <ul>
+                            <li>3D-лазерное сканирование фасадов</li>
+                            <li>Тахеометрическая съемка с детализацией</li>
+                            <li>Съемка с применением БПЛА (дронов)</li>
+                            <li>Создание цифровых 3D-моделей</li>
+                            <li>Выявление деформаций и отклонений</li>
+                            <li>Подготовка исполнительной документации</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Топографо-геодезические работы</h3>
+                        <p>Полный комплекс изысканий для проектирования и строительства:</p>
+                        <ul>
+                            <li>Топографическая съемка масштаба 1:500 - 1:5000</li>
+                            <li>Исполнительная геодезическая съемка</li>
+                            <li>Разбивочные работы и вынос в натуру</li>
+                            <li>Создание цифровых моделей местности</li>
+                            <li>Мониторинг деформаций сооружений</li>
+                            <li>Кадастровые работы и межевание</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Инженерные изыскания</h3>
+                        <p>Комплексные исследования для строительства и проектирования:</p>
+                        <ul>
+                            <li>Инженерно-геодезические изыскания</li>
+                            <li>Трассирование линейных объектов</li>
+                            <li>Нивелирование и передача высот</li>
+                            <li>Обследование подземных коммуникаций</li>
+                            <li>Геодезическое сопровождение строительства</li>
+                            <li>Подготовка технических отчетов</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>3D-сканирование объектов</h3>
+                        <p>Создание точных цифровых копий объектов любой сложности:</p>
+                        <ul>
+                            <li>Лазерное сканирование зданий и сооружений</li>
+                            <li>Сканирование промышленных объектов</li>
+                            <li>Создание BIM-моделей</li>
+                            <li>Обработка данных сканирования</li>
+                            <li>Виртуальные туры по объектам</li>
+                            <li>Инвентаризация и паспортизация</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Кадастровые работы</h3>
+                        <p>Услуги в области землеустройства и кадастрового учета:</p>
+                        <ul>
+                            <li>Межевание земельных участков</li>
+                            <li>Подготовка технических планов</li>
+                            <li>Кадастровая съемка объектов недвижимости</li>
+                            <li>Исправление кадастровых ошибок</li>
+                            <li>Сопровождение сделок с недвижимостью</li>
+                            <li>Консультации по кадастровым вопросам</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Экспертиза и консалтинг</h3>
+                        <p>Профессиональная оценка и консультационные услуги:</p>
+                        <ul>
+                            <li>Строительно-техническая экспертиза</li>
+                            <li>Судебная геодезическая экспертиза</li>
+                            <li>Оценка точности геодезических работ</li>
+                            <li>Консультации по геодезическим вопросам</li>
+                            <li>Аудит геодезической документации</li>
+                            <li>Разработка методик измерений</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#contact" class="cta-button">Заказать консультацию по услугам</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная форма -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Оставить заявку на услуги</h2>
+            <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Заполните форму ниже, и наш менеджер свяжется с вами в течение 1 рабочего дня для уточнения деталей и расчета стоимости.
+            </p>
+
+            <div class="contact-form">
+                <form id="requestForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Название компании</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Интересующая услуга *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Выберите услугу</option>
+                            <option value="facade">Фасадная съемка зданий</option>
+                            <option value="topographic">Топографо-геодезические работы</option>
+                            <option value="engineering">Инженерные изыскания</option>
+                            <option value="3dscan">3D-сканирование объектов</option>
+                            <option value="cadastral">Кадастровые работы</option>
+                            <option value="expertise">Экспертиза и консалтинг</option>
+                            <option value="consultation">Консультация по услугам</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="object">Объект работ (адрес или описание) *</label>
+                        <input type="text" id="object" name="object" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Дополнительная информация</label>
+                        <textarea id="message" name="message" placeholder="Укажите дополнительные требования, сроки, особые условия и т.д."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ООО "Репер"</h3>
+                    <p>Специализация на профессиональных геодезических услугах, ключевым направлением которых является фасадная съёмка зданий и сооружений.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Геодезическая, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@reper-geo.ru</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Наши услуги</h3>
+                    <ul>
+                        <li><a href="#services">Фасадная съемка зданий</a></li>
+                        <li><a href="#services">Топографо-геодезические работы</a></li>
+                        <li><a href="#services">Инженерные изыскания</a></li>
+                        <li><a href="#services">3D-сканирование объектов</a></li>
+                        <li><a href="#services">Кадастровые работы</a></li>
+                        <li><a href="#services">Экспертиза и консалтинг</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Документация</h3>
+                    <ul>
+                        <li><a class="doc-link" data-pdf="license">Лицензии и сертификаты</a></li>
+                        <li><a class="doc-link" data-pdf="privacy">Политика конфиденциальности</a></li>
+                        <li><a class="doc-link" data-pdf="contract">Договор оказания услуг</a></li>
+                        <li><a class="doc-link" data-pdf="methodology">Методики выполнения работ</a></li>
+                        <li><a class="doc-link" data-pdf="price">Прайс-лист услуг</a></li>
+                        <li><a class="doc-link" data-pdf="samples">Образцы документов</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#advantages">Наши преимущества</a></li>
+                        <li><a href="#process">Процесс работы</a></li>
+                        <li><a href="#economics">Стоимость услуг</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="#services" class="cta-small">Заказать услугу</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 ООО "Репер". Все права защищены. Московский государственный университет геодезии и картографии (МИИГАиК)</p>
+                <p>Контрольная работа по дисциплине "Автоматизированные системы проектирования и кадастров"</p>
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #888;">
+                    <p>ИНН: 1234567890 | ОГРН: 1234567890123 | КПП: 123456789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для просмотра PDF -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3 id="pdfTitle">Просмотр документа</h3>
+                <button class="close-pdf" id="closePdf">&times;</button>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe class="pdf-viewer" id="pdfViewer" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Обработка формы
+        document.getElementById('requestForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Сбор данных формы
+            const formData = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                object: document.getElementById('object').value,
+                message: document.getElementById('message').value
+            };
+
+            // В реальном проекте здесь была бы отправка данных на сервер
+            // Для демонстрации просто показываем сообщение
+            const serviceName = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+            alert('Спасибо, ' + formData.name + '! Ваша заявка на услугу "' + serviceName + '" принята. Мы свяжемся с вами в течение 1 рабочего дня.');
+
+            // Сброс формы
+            document.getElementById('requestForm').reset();
+        });
+
+        // Функция плавной прокрутки
+        function smoothScrollTo(targetId, offset = 80) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Функция для создания PDF файлов
+        function createPDFBlob(content, filename) {
+            // В реальном проекте здесь были бы реальные PDF файлы
+            // Для демо создаем HTML страницу, которая выглядит как PDF
+            const pdfHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${filename}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 40px; }
+                        .header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #333; padding-bottom: 20px; }
+                        .logo { font-size: 24px; font-weight: bold; color: #2c3e50; }
+                        .title { font-size: 20px; margin: 30px 0; color: #2c3e50; }
+                        .content { line-height: 1.6; }
+                        .footer { margin-top: 50px; border-top: 1px solid #ccc; padding-top: 20px; font-size: 12px; color: #666; }
+                        .signature { margin-top: 50px; }
+                        .stamp { border: 2px solid red; padding: 10px; display: inline-block; margin-top: 20px; }
+                        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+                        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+                        th { background-color: #f2f2f2; }
+                        ul { padding-left: 20px; }
+                        li { margin-bottom: 8px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <div class="logo">ООО "Репер"</div>
+                        <div>Геодезические услуги</div>
+                        <div>Москва, ул. Геодезическая, 15</div>
+                    </div>
+                    ${content}
+                    <div class="footer">
+                        <p>Документ сгенерирован: ${new Date().toLocaleDateString('ru-RU')}</p>
+                        <p>ООО "Репер", ИНН 1234567890, ОГРН 1234567890123</p>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            // Создаем Blob из HTML
+            return new Blob([pdfHTML], { type: 'text/html' });
+        }
+
+        // Данные для разных PDF документов
+        const pdfContents = {
+            license: {
+                title: "Лицензии и сертификаты ООО 'Репер'",
+                content: `
+                    <h1 class="title">Лицензии и сертификаты</h1>
+                    <div class="content">
+                        <h3>Основные лицензии:</h3>
+                        <ul>
+                            <li><strong>Лицензия № ГС-12345/2024</strong> на осуществление геодезических и картографических работ</li>
+                            <li><strong>СРО-ГЕО-7890</strong> - Свидетельство о допуске к работам по инженерным изысканиям</li>
+                            <li><strong>Сертификат ISO 9001:2015</strong> - Система менеджмента качества</li>
+                        </ul>
+
+                        <h3>Сертификаты сотрудников:</h3>
+                        <ul>
+                            <li>Сертификаты кадастровых инженеров (5 сотрудников)</li>
+                            <li>Сертификаты по работе с 3D-лазерным сканированием</li>
+                            <li>Допуски к высотным работам</li>
+                            <li>Сертификаты по работе с БПЛА</li>
+                        </ul>
+
+                        <div class="signature">
+                            <p><strong>Генеральный директор</strong></p>
+                            <p>_________________ / И.С. Семикина</p>
+                            <p>"___" ___________ 2026 г.</p>
+                            <div class="stamp">М.П.</div>
+                        </div>
+                    </div>
+                `
+            },
+            privacy: {
+                title: "Политика конфиденциальности",
+                content: `
+                    <h1 class="title">Политика конфиденциальности ООО 'Репер'</h1>
+                    <div class="content">
+                        <h3>1. Общие положения</h3>
+                        <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты информации о физических и юридических лицах, использующих услуги ООО "Репер".</p>
+
+                        <h3>2. Собираемая информация</h3>
+                        <ul>
+                            <li>Контактные данные (ФИО, телефон, email)</li>
+                            <li>Реквизиты организации</li>
+                            <li>Данные об объектах геодезических работ</li>
+                            <li>Техническая документация по проектам</li>
+                        </ul>
+
+                        <h3>3. Использование информации</h3>
+                        <p>Информация используется исключительно для:</p>
+                        <ul>
+                            <li>Выполнения геодезических работ</li>
+                            <li>Подготовки отчетной документации</li>
+                            <li>Коммуникации с заказчиком</li>
+                            <li>Улучшения качества услуг</li>
+                        </ul>
+
+                        <h3>4. Защита информации</h3>
+                        <p>Мы принимаем все необходимые меры для защиты ваших данных от несанкционированного доступа.</p>
+                    </div>
+                `
+            },
+            contract: {
+                title: "Типовой договор оказания услуг",
+                content: `
+                    <h1 class="title">Договор № ___ на оказание геодезических услуг</h1>
+                    <div class="content">
+                        <p><strong>г. Москва</strong> "___" ___________ 2026 г.</p>
+
+                        <p>Общество с ограниченной ответственностью "Репер", именуемое в дальнейшем "Исполнитель", в лице Генерального директора Семикиной Ирины Станиславовны, действующей на основании Устава, с одной стороны, и</p>
+
+                        <p>___________________________________________________________________________________________,</p>
+                        <p>именуемый в дальнейшем "Заказчик", с другой стороны, заключили настоящий договор о нижеследующем:</p>
+
+                        <h3>1. Предмет договора</h3>
+                        <p>1.1. Исполнитель обязуется выполнить следующие геодезические работы: _________________________</p>
+                        <p>1.2. Срок выполнения работ: _________________________</p>
+
+                        <h3>2. Стоимость и порядок расчетов</h3>
+                        <p>2.1. Стоимость работ составляет: _________________________ руб.</p>
+                        <p>2.2. Оплата производится в следующем порядке: _________________________</p>
+
+                        <h3>3. Обязательства сторон</h3>
+                        <p>3.1. Исполнитель обязуется выполнить работы в соответствии с техническим заданием.</p>
+                        <p>3.2. Заказчик обязуется предоставить доступ к объекту и необходимую документацию.</p>
+
+                        <div class="signature">
+                            <table width="100%">
+                                <tr>
+                                    <td width="50%">
+                                        <p><strong>Исполнитель:</strong></p>
+                                        <p>ООО "Репер"</p>
+                                        <br><br>
+                                        <p>_________________ / И.С. Семикина</p>
+                                        <div class="stamp" style="margin-top: 20px;">М.П.</div>
+                                    </td>
+                                    <td width="50%">
+                                        <p><strong>Заказчик:</strong></p>
+                                        <p>_________________________</p>
+                                        <br><br>
+                                        <p>_________________ / _________________</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                `
+            },
+            methodology: {
+                title: "Методики выполнения геодезических работ",
+                content: `
+                    <h1 class="title">Методики выполнения работ ООО 'Репер'</h1>
+                    <div class="content">
+                        <h3>МЕТ 01-2024: Фасадная съемка зданий</h3>
+                        <p><strong>Точность измерений:</strong> ±5 мм</p>
+                        <p><strong>Оборудование:</strong> тахеометры Leica TS16, 3D-сканер Faro Focus</p>
+                        <p><strong>ПО для обработки:</strong> AutoCAD, Revit, CloudCompare</p>
+
+                        <h3>МЕТ 02-2024: Топографическая съемка</h3>
+                        <p><strong>Масштабы:</strong> 1:500, 1:1000, 1:2000</p>
+                        <p><strong>Система координат:</strong> МСК-50, МСК-77</p>
+                        <p><strong>Высотная основа:</strong> Балтийская система высот</p>
+
+                        <h3>МЕТ 03-2024: 3D-лазерное сканирование</h3>
+                        <p><strong>Плотность точек:</strong> от 1 до 10 мм</p>
+                        <p><strong>Обработка данных:</strong> автоматизированная классификация</p>
+                        <p><strong>Выходные форматы:</strong> .pts, .las, .rcp</p>
+
+                        <h3>МЕТ 04-2024: Кадастровые работы</h3>
+                        <p><strong>Точность определения границ:</strong> ±10 см</p>
+                        <p><strong>Соответствие:</strong> ФЗ №218 "О государственной регистрации недвижимости"</p>
+                        <p><strong>Сроки выполнения:</strong> 10-20 рабочих дней</p>
+                    </div>
+                `
+            },
+            price: {
+                title: "Прайс-лист геодезических услуг",
+                content: `
+                    <h1 class="title">Прайс-лист услуг ООО 'Репер'</h1>
+                    <div class="content">
+                        <table>
+                            <tr style="background-color: #f2f2f2;">
+                                <th width="60%">Наименование услуги</th>
+                                <th width="20%">Ед. изм.</th>
+                                <th width="20%">Стоимость, руб.</th>
+                            </tr>
+                            <tr>
+                                <td>Фасадная съемка зданий (до 1000 м²)</td>
+                                <td>объект</td>
+                                <td>79 156</td>
+                            </tr>
+                            <tr>
+                                <td>Фасадная съемка зданий (1000-5000 м²)</td>
+                                <td>м²</td>
+                                <td>85</td>
+                            </tr>
+                            <tr>
+                                <td>Топографическая съемка масштаба 1:500</td>
+                                <td>га</td>
+                                <td>45 000</td>
+                            </tr>
+                            <tr>
+                                <td>3D-лазерное сканирование помещений</td>
+                                <td>м²</td>
+                                <td>120</td>
+                            </tr>
+                            <tr>
+                                <td>Исполнительная съемка</td>
+                                <td>объект</td>
+                                <td>25 000</td>
+                            </tr>
+                            <tr>
+                                <td>Межевание земельного участка</td>
+                                <td>участок</td>
+                                <td>15 000</td>
+                            </tr>
+                            <tr>
+                                <td>Технический план здания</td>
+                                <td>объект</td>
+                                <td>20 000</td>
+                            </tr>
+                            <tr>
+                                <td>Геодезическое сопровождение строительства</td>
+                                <td>месяц</td>
+                                <td>60 000</td>
+                            </tr>
+                        </table>
+
+                        <p style="margin-top: 20px;"><strong>Примечания:</strong></p>
+                        <ul>
+                            <li>Цены указаны без учета НДС</li>
+                            <li>Минимальная стоимость заказа - 15 000 руб.</li>
+                            <li>Срочные работы +30% к стоимости</li>
+                            <li>Выезд за МКАД + 30 руб./км</li>
+                        </ul>
+
+                        <p style="margin-top: 30px;"><strong>Действителен с 01.01.2026 по 31.12.2026</strong></p>
+                    </div>
+                `
+            },
+            samples: {
+                title: "Образцы документов и отчетов",
+                content: `
+                    <h1 class="title">Образцы документов ООО 'Репер'</h1>
+                    <div class="content">
+                        <h3>1. Образцы отчетной документации:</h3>
+                        <ul>
+                            <li><strong>Технический отчет по фасадной съемке</strong> (10 страниц)</li>
+                            <li><strong>Топографический план</strong> (масштаб 1:500)</li>
+                            <li><strong>Исполнительная схема</strong> с отклонениями</li>
+                            <li><strong>3D-модель фасада</strong> (формат .dwg, .rvt)</li>
+                        </ul>
+
+                        <h3>2. Образцы договорной документации:</h3>
+                        <ul>
+                            <li>Договор оказания услуг (типовой)</li>
+                            <li>Техническое задание</li>
+                            <li>Акт выполненных работ</li>
+                            <li>Акт сдачи-приемки</li>
+                        </ul>
+
+                        <h3>3. Образцы кадастровой документации:</h3>
+                        <ul>
+                            <li>Технический план здания</li>
+                            <li>Межевой план</li>
+                            <li>Акт обследования</li>
+                        </ul>
+
+                        <h3>4. Форма заявки на услуги:</h3>
+                        <div style="border: 1px solid #ccc; padding: 15px; margin: 15px 0;">
+                            <p><strong>Заявка на выполнение геодезических работ</strong></p>
+                            <p>Дата: __________</p>
+                            <p>Заказчик: ________________________________</p>
+                            <p>Объект: __________________________________</p>
+                            <p>Виды работ: ______________________________</p>
+                            <p>Сроки выполнения: ________________________</p>
+                            <p>Контактное лицо: _________________________</p>
+                            <p>Телефон: ________________________________</p>
+                        </div>
+
+                        <p><strong>Все образцы соответствуют требованиям:</strong></p>
+                        <ul>
+                            <li>СП 47.13330.2016 "Инженерные изыскания"</li>
+                            <li>ФЗ №218 "О государственной регистрации недвижимости"</li>
+                            <li>ГОСТ Р 8.563-2009 "Геодезические работы"</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Плавная прокрутка для навигации (кроме ссылок на документы)
+            document.querySelectorAll('nav a, .footer-column a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    // Прокручиваем только если это якорная ссылка и НЕ ссылка на документ
+                    if (href && href.startsWith('#') && !this.classList.contains('doc-link')) {
+                        e.preventDefault();
+                        smoothScrollTo(href);
+                    }
+                });
+            });
+
+            // 2. Прокрутка для кнопок
+            const heroButton = document.querySelector('.hero .cta-button');
+            if (heroButton) {
+                heroButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    smoothScrollTo('#contact');
+                });
+            }
+
+            const servicesButton = document.querySelector('#services .cta-button');
+            if (servicesButton) {
+                servicesButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    smoothScrollTo('#contact');
+                });
+            }
+
+            // 3. Обработка PDF документов
+            const pdfModal = document.getElementById('pdfModal');
+            const pdfViewer = document.getElementById('pdfViewer');
+            const pdfTitle = document.getElementById('pdfTitle');
+            const closePdf = document.getElementById('closePdf');
+
+            // Обработка кликов по документам
+            document.querySelectorAll('.doc-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pdfType = this.getAttribute('data-pdf');
+
+                    if (pdfContents[pdfType]) {
+                        // Устанавливаем заголовок
+                        pdfTitle.textContent = pdfContents[pdfType].title;
+
+                        // Создаем PDF
+                        const pdfBlob = createPDFBlob(pdfContents[pdfType].content, pdfContents[pdfType].title);
+                        const pdfUrl = URL.createObjectURL(pdfBlob);
+
+                        // Загружаем в iframe
+                        pdfViewer.src = pdfUrl;
+
+                        // Показываем модальное окно
+                        pdfModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Закрытие модального окна
+            closePdf.addEventListener('click', function () {
+                pdfModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                pdfViewer.src = '';
+            });
+
+            // Закрытие по клику вне окна
+            pdfModal.addEventListener('click', function (e) {
+                if (e.target === pdfModal) {
+                    pdfModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    pdfViewer.src = '';
+                }
+            });
+
+            // Закрытие по клавише Esc
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+                    pdfModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    pdfViewer.src = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
